@@ -6,37 +6,37 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Quiz3.Triangle;
+import Quiz3.TriangleException;
 
 public class triangleTest {
 
-	public static Triangle tri1;
-	public static Triangle tri2;
-	public static Triangle tri3;
+	public triangleTest() {
 
-	/** These define all the triangles that are being tested */
-	@Before
-	public void setUpBeforeClass() throws Exception {
-		tri1 = new Triangle(0, 4, 4);
-		tri2 = new Triangle(5, 7, 10);
-		tri3 = new Triangle(6, 8, 10);
+	}
+
+	/** a method to test whether it is an imaginary triangle */
+	@Test(expected = TriangleException.class)
+	public void ImaginaryTriagle() throws TriangleException {
+		Triangle tri = new Triangle(100, 10000, 2);
 	}
 
 	/** This tests the perimeter of the test triangles */
 	@Test
-	public void testPerimeter() {
-		assertTrue(tri1.getPerimeter() == 8);
-		assertTrue(tri2.getPerimeter() == 22);
-		assertTrue(tri3.getPerimeter() == 24);
+	public void getPerimeter() throws TriangleException {
+		Triangle triangle = new Triangle(10, 11, 10);
+		double expected = 31;
+		double answer = triangle.getPerimeter();
+		assertEquals(answer, expected, .01);
 
 	}
 
 	/** This tests the area of the test triangles */
 	@Test
-	public void testArea() {
-		assertTrue(tri1.getArea() == 0);
-		assertTrue(tri2.getArea() == 16.248);
-		assertTrue(tri3.getArea() == 24);
+	public void getArea() throws TriangleException {
+		Triangle triangle = new Triangle(10, 11, 10);
+		double expected = 45.93;
+		double answer = triangle.getArea();
+		assertEquals(answer, expected, .01);
 
 	}
-
 }

@@ -12,13 +12,16 @@ public class Triangle extends GeometricObject {
 
 	}
 
+	
 	/** Constructor that creates a triangle with the specified sides */
-	public Triangle(double side1, double side2, double side3) {
-
-		this.side1 = side1;
-		this.side2 = side2;
-		this.side3 = side3;
-
+	public Triangle(double side1, double side2, double side3) throws TriangleException {
+		if ((side1 + side2 > side3) && (side2 + side3) > side1 && (side1 + side3) > side2 ) {
+			this.side1 = side1;
+			this.side2 = side2;
+			this.side3 = side3;
+		} else {
+			throw new TriangleException(this);
+		}
 	}
 
 	/** The accessor methods for all data types */
@@ -60,7 +63,6 @@ public class Triangle extends GeometricObject {
 
 		return Math.sqrt(per * ((per - side1) * (per - side2) * (per - side3)));
 	}
-
 	/** A method that returns a string description of the triangle */
 	public String toString() {
 		return " Triangle's: Side 1 is equal to " + side1 + " Side 2 is equal 2 " + side2 + " Side 3 is equal to "
